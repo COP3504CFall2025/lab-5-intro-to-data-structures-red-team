@@ -1,4 +1,4 @@
-// #ifdef MAIN
+#ifdef MAIN
 
 #include "ABDQ.hpp"
 #include "ABQ.hpp"
@@ -30,7 +30,7 @@ int main() {
     // deq.pushFront(3);
     // deq.pushBack(4);
 
-    for(int i = 0; i < deq.getSize(); i++) {
+    for(size_t i = 0; i < deq.getSize(); i++) {
         std::cout << deq.popFront() << std::endl;
     }
 
@@ -38,4 +38,4 @@ int main() {
 }
 
 
-// #endif
+#endif
