@@ -15,14 +15,14 @@ class LinkedList {
 public:
 	// Behaviors
 	void printForward() const {
-		Node* i = this->getHead();
+		Node<T>* i = this->getHead();
 		while(i != nullptr) {
 			std::cout << i->data << std::endl;
 			i = i->next;
 		}
 	}
 	void printReverse() const {
-		Node* i = this->getTail();
+		Node<T>* i = this->getTail();
 		while(i != nullptr) {
 			std::cout << i->data << std::endl;
 			i = i->prev;
@@ -33,22 +33,22 @@ public:
 	[[nodiscard]] unsigned int getCount() const {
 		return this->count;
 	};
-	Node* getHead() {
+	Node<T>* getHead() {
 		return this->head;
 	}
-	const Node* getHead() const {
+	const Node<T>* getHead() const {
 		return this->head;
 	}
-	Node* getTail() {
+	Node<T>* getTail() {
 		return this->tail;
 	}
-	const Node* getTail() const {
+	const Node<T>* getTail() const {
 		return this->tail;
 	}
 
 	// Insertion
 	void addHead(const T& data) {
-		Node* temp = new Node(data);
+		Node<T>* temp = new Node<T>(data);
 		temp->next = this->head;
 		temp->prev = nullptr;
 		temp->data = data;
@@ -62,7 +62,7 @@ public:
 		this->count++;
 	}
 	void addTail(const T& data) {
-		Node* temp = new Node(data);
+		Node<T>* temp = new Node<T>(data);
 		temp->prev = this->tail;
 		temp->next = nullptr;
 		if(this->tail)
@@ -99,7 +99,7 @@ public:
 		return true
 	}
 	void Clear() {
-		Node* i = this->head;
+		Node<T>* i = this->head;
 		while(i != nullptr) {
 			delete i;
 			i = i->next;
@@ -153,10 +153,10 @@ public:
 			this->count = 0;
 		}
 		else {
-			this->head = new Node(list.getHead()->data);
+			this->head = new Node<T>(list.getHead()->data);
 			this->count = list.getCount();
-			Node* otherTemp = list.head->next;
-			Node* thisTemp = this->head->next;
+			Node<T>* otherTemp = list.head->next;
+			Node<T>* thisTemp = this->head->next;
 
 			while(otherTemp != nullptr) {
 				thisTemp = new Node(otherTemp->data);
@@ -180,8 +180,8 @@ public:
 
 private:
 	// Stores pointers to first and last nodes and count
-	Node* head;
-	Node* tail;
+	Node<T>* head;
+	Node<T>* tail;
 	unsigned int count;
 
 };

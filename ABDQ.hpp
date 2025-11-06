@@ -40,7 +40,7 @@ public:
         this->back_ = this->size_ - 1;
 
         // copy in new order
-        for(int i = 0; i < this->size_; i++) {
+        for(size_t i = 0; i < this->size_; i++) {
             this->data_[i] = other.data_[(other.front_ + i) % this->capacity_];
         }
     }
@@ -65,7 +65,7 @@ public:
         this->back_ = this->size_ - 1;
 
         // copy in new order
-        for(int i = 0; i < this->size_; i++) {
+        for(size_t i = 0; i < this->size_; i++) {
             this->data_[i] = other.data_[(other.front_ + i) % this->capacity_];
         }
     }
@@ -93,7 +93,7 @@ public:
             T* newArr = new T[this->capacity_];
 
             // copy in new order
-            for(int i = 0; i < this->size_; i++) {
+            for(size_t i = 0; i < this->size_; i++) {
                 newArr[i] = this->data_[(this->front_ + i) % capacity_];
             }
             delete[] this->data_;
@@ -114,7 +114,7 @@ public:
             T* newArr = new T[this->capacity_];
 
             // copy in new order
-            for(int i = 0; i < this->size_; i++) {
+            for(size_t i = 0; i < this->size_; i++) {
                 newArr[i] = this->data_[(this->front_ + i) % capacity_];
             }
             delete[] this->data_;
@@ -144,12 +144,12 @@ public:
 
     // Access
     const T& front() const override {
-        if(this->curr_size_ == 0)
+        if(this->size_ == 0)
             throw new std::out_of_range("The Deque is empty");
         return this->data_[this->front_];
     }
     const T& back() const override {
-        if(this->curr_size_ == 0)
+        if(this->size_ == 0)
             throw new std::out_of_range("The Deque is empty");
         return this->data_[this->back_];
     }
