@@ -54,7 +54,7 @@ public:
         other.array_ = nullptr;
     }
     ABS& operator=(ABS&& rhs) noexcept {
-        if(this == &other)
+        if(this == &rhs)
             return *this;
         if(this->array_)
             delete[] this->array_;

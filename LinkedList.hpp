@@ -96,7 +96,7 @@ public:
 		if(this->tail == nullptr)
 			this->head = nullptr;
 		this->count--;
-		return true
+		return true;
 	}
 	void clear() {
 		Node<T>* i = this->head;
@@ -128,10 +128,10 @@ public:
 			this->head = new Node(rhs.getHead()->data);
 			this->count = rhs.getCount();
 
-			Node* thisTemp = this->head->next;
-			Node* otherTemp = rhs.head->next;
+			Node<T>* thisTemp = this->head->next;
+			Node<T>* otherTemp = rhs.head->next;
 			while(otherTemp != nullptr) {
-				thisTemp = new Node(rhs.data);
+				thisTemp = new Node<T>(rhs.data);
 				thisTemp = thisTemp->next;
 				otherTemp = otherTemp->next;
 			}

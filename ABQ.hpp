@@ -60,7 +60,7 @@ public:
         other.array_ = nullptr;
     }
     ABQ& operator=(ABQ&& rhs) noexcept {
-        if(this == &other)
+        if(this == &rhs)
             return *this;
         if(this->array_)
             delete[] this->array_;

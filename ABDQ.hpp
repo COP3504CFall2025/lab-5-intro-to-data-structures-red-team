@@ -147,12 +147,12 @@ public:
     // Access
     const T& front() const override {
         if(this->size_ == 0)
-            throw new std::out_of_range("The Deque is empty");
+            throw std::runtime_error("Empty");
         return this->data_[this->front_];
     }
     const T& back() const override {
         if(this->size_ == 0)
-            throw new std::out_of_range("The Deque is empty");
+            throw std::runtime_error("Empty");
         return this->data_[this->back_];
     }
 
