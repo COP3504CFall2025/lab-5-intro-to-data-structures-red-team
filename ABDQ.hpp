@@ -134,11 +134,13 @@ public:
     T popFront() override {
         T front = this->data_[this->front_];
         this->front_ = (this->front_ + 1) % this->capacity_;
+        this->size_--;
         return front;
     }
     T popBack() override {
         T back = this->data_[this->back_];
         this->back_ = (this->back_ - 1 + this->capacity_) % this->capacity_;
+        this->size_--;
         return back;
     }
 

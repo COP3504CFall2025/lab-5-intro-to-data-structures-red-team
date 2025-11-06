@@ -98,7 +98,7 @@ public:
 		this->count--;
 		return true
 	}
-	void Clear() {
+	void clear() {
 		Node<T>* i = this->head;
 		while(i != nullptr) {
 			delete i;
@@ -175,7 +175,7 @@ public:
 		this->count = other.count;
 	}
 	~LinkedList() {
-		this->Clear();
+		this->clear();
 	}
 
 private:
