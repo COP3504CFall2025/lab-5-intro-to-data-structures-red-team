@@ -94,8 +94,8 @@ public:
             for(int i = 0; i < this->curr_size_; i++) {
                 newArr[i] =  this->array_[i];
             }
-            delete[] this->array;
-            this->array = newArr;
+            delete[] this->array_;
+            this->array_ = newArr;
             newArr = nullptr;
         }
         this->array_[curr_size_++] = data;

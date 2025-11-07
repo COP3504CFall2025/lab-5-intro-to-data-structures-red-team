@@ -68,9 +68,9 @@ public:
 		if(this->tail)
 			this->tail->next = temp;
 		else {
-			this->tail = temp;
 			this->head = temp;
 		}
+		this->tail = temp;
 		temp = nullptr; // avoid DD and dangling ptr
 		this->count++;
 	}
@@ -88,13 +88,20 @@ public:
 		return true;
 	}
 	bool removeTail() {
-		if(this->tail == nullptr)
+		if(this->count == 0)
 			return false;
+		if(this->count == 1) {
+			// last element
+			delete this->tail;
+			this->tail = nullptr;
+			this->head = nullptr;
+			count = 0;
+			return true;
+		}
+		// otherwise normal situation
 		this->tail = this->tail->prev;
 		delete this->tail->next;
 		this->tail->next = nullptr;
-		if(this->tail == nullptr)
-			this->head = nullptr;
 		this->count--;
 		return true;
 	}
@@ -114,6 +121,7 @@ public:
 		this->count = other.getCount();
 		other.head = nullptr;
 		other.tail = nullptr;
+		return *this;
 	}
 	LinkedList<T>& operator=(const LinkedList<T>& rhs) {
 		if(&rhs == this) {
