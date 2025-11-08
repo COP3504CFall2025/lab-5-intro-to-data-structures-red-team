@@ -106,14 +106,14 @@ public:
     // Access
     T peek() const override {
         if(this->curr_size_ == 0)
-            throw std::runtime_error("Empty");
+            throw std::runtime_error("");
         return this->array_[this->curr_size_ - 1];
     }
 
     // Deletion
     T dequeue() override {
         if(this->curr_size_ == 0) {
-            throw new std::out_of_range("There are no elements to dequeue.");
+            throw std::runtime_error("");
         }
 
         this->curr_size_--;

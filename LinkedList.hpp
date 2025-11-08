@@ -77,8 +77,9 @@ public:
 
 	// Removal
 	bool removeHead() {
-		if(this->count == 0)
-			return false;
+		if(this->count == 0) {
+			throw std::runtime_error("");
+		}
 		if(this->count == 1) {
 			// last element
 			delete this->head;
@@ -96,7 +97,7 @@ public:
 	}
 	bool removeTail() {
 		if(this->count == 0)
-			return false;
+			throw std::runtime_error("");
 		if(this->count == 1) {
 			// last element
 			delete this->tail;

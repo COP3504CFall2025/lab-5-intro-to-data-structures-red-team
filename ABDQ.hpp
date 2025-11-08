@@ -133,7 +133,7 @@ public:
     // is it okay to leave the data in the array and just create the illusion that it's inaccessible garbage outside of this class?
     T popFront() override {
         if(this->size_ == 0)
-            throw std::runtime_error("Empty");
+            throw std::runtime_error("");
         T front = this->data_[this->front_];
         this->front_ = (this->front_ + 1) % this->capacity_;
         this->size_--;
@@ -141,7 +141,7 @@ public:
     }
     T popBack() override {
         if(this->size_ == 0)
-            throw std::runtime_error("Empty");
+            throw std::runtime_error("");
         T back = this->data_[this->back_];
         this->back_ = (this->back_ - 1 + this->capacity_) % this->capacity_;
         this->size_--;
@@ -151,12 +151,12 @@ public:
     // Access
     const T& front() const override {
         if(this->size_ == 0)
-            throw std::runtime_error("Empty");
+            throw std::runtime_error("");
         return this->data_[this->front_];
     }
     const T& back() const override {
         if(this->size_ == 0)
-            throw std::runtime_error("Empty");
+            throw std::runtime_error("");
         return this->data_[this->back_];
     }
 
