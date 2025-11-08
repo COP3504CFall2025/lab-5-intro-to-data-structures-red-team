@@ -22,6 +22,8 @@ public:
 
     // Deletion
     T dequeue() override {
+        if(this->list.getCount() == 0)
+            throw std::runtime_error("Empty");
         T temp = this->list.getHead()->data;
         this->list.removeHead();
         return temp;
@@ -29,6 +31,8 @@ public:
 
     // Access
     T peek() const override {
+        if(this->list.getCount() == 0)
+            throw std::runtime_error("Empty");
         return this->list.getHead()->data;
     }
 

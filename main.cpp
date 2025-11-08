@@ -20,26 +20,26 @@
 
 int main() {
 
-    LLS<int> sta;
-    sta.push(1);
-    sta.push(2);
-    sta.push(3);
+    ABDQ<int> sta;
+    // sta.pushBack(1);
+    // sta.pushBack(2);
+    // sta.pushBack(3);
     // sta.pop();
     // deq.pushFront(1);
     // deq.pushFront(2);
     // deq.pushFront(3);
     // deq.pushFront(4);
-    
+    std::cout << sta.front() << std::endl;
 
     // deq.pushBack(2);
     // deq.pushFront(3);
     // deq.pushBack(4);
 
     // std::cout << sta.getSize() << std::endl;
-    while(sta.getSize() > 0) {
-        // std::cout << sta.getSize() << std::endl;
-        std::cout << sta.pop() << std::endl;
-    }
+    // while(sta.getSize() > 0) {
+    //     // std::cout << sta.getSize() << std::endl;
+    //     std::cout << sta.pop() << std::endl;
+    // }
 
     return 0;
 }

@@ -22,6 +22,8 @@ public:
 
     // Deletion
     T pop() override {
+        if(this->list.getCount() == 0)
+            throw std::runtime_error("Empty");
         T temp = this->list.getTail()->data;
         this->list.removeTail();
         return temp;
@@ -29,6 +31,8 @@ public:
 
     // Access
     T peek() const override {
+        if(this->list.getCount() == 0)
+            throw std::runtime_error("Empty");
         return this->list.getTail()->data;
     }
 
