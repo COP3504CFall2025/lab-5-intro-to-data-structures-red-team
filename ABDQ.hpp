@@ -52,6 +52,8 @@ public:
         this->front_ = other.front_;
         this->back_ = other.back_;
         other.data_ = nullptr;
+        other.size_ = 0;
+        other.capacity_ = 0;
     }
     ABDQ& operator=(const ABDQ& other) {
         if(this == &other) {
@@ -81,6 +83,8 @@ public:
         this->front_ = other.front_;
         this->back_ = other.back_;
         other.data_ = nullptr;
+        other.size_ = 0;
+        other.capacity_ = 0;
     }
     ~ABDQ() override {
         delete[] this->data_;
