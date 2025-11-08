@@ -20,7 +20,7 @@ public:
     virtual void enqueue(const T& item) = 0;
     virtual T dequeue() = 0;
     virtual T peek() const = 0;
-    virtual std::size_t getSize() const noexcept = 0;
+    [[nodiscard]] virtual std::size_t getSize() const noexcept = 0;
     virtual ~QueueInterface() = default;
 };
 

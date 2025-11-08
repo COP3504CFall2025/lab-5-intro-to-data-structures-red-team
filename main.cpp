@@ -1,4 +1,4 @@
-// #ifdef MAIN
+#ifdef MAIN
 
 #include "ABDQ.hpp"
 #include "ABQ.hpp"
@@ -20,10 +20,10 @@
 
 int main() {
 
-    LLS<int> sta;
-    sta.push(1);
-    sta.push(2);
-    sta.push(3);
+    ABDQ<int> sta;
+    sta.pushFront(1);
+    sta.pushFront(2);
+    sta.pushBack(3);
     // sta.pop();
     // deq.pushFront(1);
     // deq.pushFront(2);
@@ -35,12 +35,14 @@ int main() {
     // deq.pushFront(3);
     // deq.pushBack(4);
 
+    // std::cout << sta.getSize() << std::endl;
     while(sta.getSize() > 0) {
-        std::cout << sta.pop() << std::endl;
+        // std::cout << sta.getSize() << std::endl;
+        std::cout << sta.popFront() << std::endl;
     }
 
     return 0;
 }
 
 
-// #endif
+#endif

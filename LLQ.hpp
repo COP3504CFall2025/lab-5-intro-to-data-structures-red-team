@@ -12,7 +12,7 @@ private:
 public:
     // Constructor
     LLQ() {
-        this->list = new LinkedList<T>();
+        this->list = LinkedList<T>();
     }
 
     // Insertion
@@ -22,18 +22,18 @@ public:
 
     // Deletion
     T dequeue() override {
-        T temp = this-list.getHead();
+        T temp = this->list.getHead()->data;
         this->list.removeHead();
         return temp;
     }
 
     // Access
     T peek() const override {
-        return this->list.getHead();
+        return this->list.getHead()->data;
     }
 
     // Getter
-    std::size_t getSize() const noexcept override {
+    [[nodiscard]] std::size_t getSize() const noexcept override {
         return this->list.getCount();
     }
 

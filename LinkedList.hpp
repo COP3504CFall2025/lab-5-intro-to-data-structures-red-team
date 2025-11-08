@@ -77,14 +77,21 @@ public:
 
 	// Removal
 	bool removeHead() {
-		if(this->head == nullptr)
+		if(this->count == 0)
 			return false;
+		if(this->count == 1) {
+			// last element
+			delete this->head;
+			this->head = nullptr;
+			this->tail = nullptr;
+			count = 0;
+			return true;
+		}
+		// otherwise normal situation
 		this->head = this->head->next;
 		delete this->head->prev;
 		this->head->prev = nullptr;
-		if(this->head == nullptr)
-			this->tail = nullptr;
-		this->count--;
+		this->count -= 1;
 		return true;
 	}
 	bool removeTail() {
@@ -102,7 +109,7 @@ public:
 		this->tail = this->tail->prev;
 		delete this->tail->next;
 		this->tail->next = nullptr;
-		this->count--;
+		this->count -= 1;
 		return true;
 	}
 	void clear() {
@@ -139,7 +146,7 @@ public:
 			Node<T>* thisTemp = this->head->next;
 			Node<T>* otherTemp = rhs.head->next;
 			while(otherTemp != nullptr) {
-				thisTemp = new Node<T>(rhs.data);
+				thisTemp = new Node<T>(otherTemp->data);
 				thisTemp = thisTemp->next;
 				otherTemp = otherTemp->next;
 			}

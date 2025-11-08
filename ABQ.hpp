@@ -34,7 +34,7 @@ public:
 
         // copy array
         for(int i = 0; i < this->curr_size_; i++) {
-            this->array[i] = other.array_[i];
+            this->array_[i] = other.array_[i];
         }
     }
     ABQ& operator=(const ABQ& rhs) {
@@ -89,15 +89,15 @@ public:
     void enqueue(const T& data) override {
         if(curr_size_ + 1 > capacity_) {
             // resize array
-            this->capacity_ *= this->scale_factor_;
+            this->capacity_ *= scale_factor_;
             T* newArr = new T[this->capacity_];
             
             // copy over to new array
             for(int i = 0; i < this->curr_size_; i++) {
                 newArr[i] =  this->array_[i];
             }
-            delete[] this->array;
-            this->array = newArr;
+            delete[] this->array_;
+            this->array_ = newArr;
             newArr = nullptr;
         }
         this->array_[curr_size_++] = data;

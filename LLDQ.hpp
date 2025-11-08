@@ -16,7 +16,7 @@ private:
 public:
     // Constructor
     LLDQ() {
-        this->list = new LinkedList<T>();
+        this->list = LinkedList<T>();
     }
 
     // Core Insertion Operations
@@ -29,22 +29,26 @@ public:
 
     // Core Removal Operations
     T popFront() override {
+        T temp = this->list.getHead()->data;
         this->list.removeHead();
+        return temp;
     }
     T popBack() override {
+        T temp = this->list.getTail()->data;
         this->list.removeTail();
+        return temp;
     }
 
     // Element Accessors
     const T& front() const override {
-        return this->list.getHead();
+        return this->list.getHead()->data;
     }
     const T& back() const override {
-        return this->list.getTail();
+        return this->list.getTail()->data;
     }
 
     // Getter
-    std::size_t getSize() const noexcept override {
+    [[nodiscard]] std::size_t getSize() const noexcept override {
         return this->list.getCount();
     }
 };
