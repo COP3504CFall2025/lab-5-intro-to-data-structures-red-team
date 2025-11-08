@@ -4,6 +4,7 @@
 #include <stdexcept>
 #include "Interfaces.hpp"
 #include <utility>
+#include <iostream>
 
 template <typename T>
 class ABDQ : public DequeInterface<T> {
@@ -89,34 +90,38 @@ public:
     void pushFront(const T& item) override { // push to the left of front_
         if(this->size_ + 1 > capacity_) {
             // resize to fit new item and reorder
-            this->capacity_ *= this->SCALE_FACTOR;
-            T* newArr = new T[this->capacity_];
+            T* newArr = new T[this->capacity_ * SCALE_FACTOR];
 
             // copy in new order
             for(size_t i = 0; i < this->size_; i++) {
                 newArr[i] = this->data_[(this->front_ + i) % capacity_];
             }
+            this->front_ = 0;
+            this->back_ = this->size_ - 1;
+            this->capacity_ *= SCALE_FACTOR;
             delete[] this->data_;
             this->data_ = newArr;
             newArr = nullptr;
         }
-        this->front_ = ((this->front_ - 1) + this->capacity_) % this->capacity_;
+        this->front_ = ((this->front_ - 1) + this->capacity_) % this->capacity_; // move front back one
         if(this->size_ == 0) { // first element will become both the front and back
             this->back_ = this->front_;
         }
-        this->data_[this->front_] = item; 
+        this->data_[this->front_] = item;
         this->size_++;
     }
     void pushBack(const T& item) override {
         if(this->size_ + 1 > capacity_) {
             // resize to fit new item and reorder
-            this->capacity_ *= this->SCALE_FACTOR;
-            T* newArr = new T[this->capacity_];
+            T* newArr = new T[this->capacity_ * SCALE_FACTOR];
 
             // copy in new order
             for(size_t i = 0; i < this->size_; i++) {
                 newArr[i] = this->data_[(this->front_ + i) % capacity_];
             }
+            this->front_ = 0;
+            this->back_ = this->size_ - 1;
+            this->capacity_ *= SCALE_FACTOR;
             delete[] this->data_;
             this->data_ = newArr;
             newArr = nullptr;
