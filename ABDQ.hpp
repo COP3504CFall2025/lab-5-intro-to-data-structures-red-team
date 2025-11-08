@@ -132,12 +132,16 @@ public:
     // Deletion
     // is it okay to leave the data in the array and just create the illusion that it's inaccessible garbage outside of this class?
     T popFront() override {
+        if(this->size_ == 0)
+            throw std::runtime_error("Empty");
         T front = this->data_[this->front_];
         this->front_ = (this->front_ + 1) % this->capacity_;
         this->size_--;
         return front;
     }
     T popBack() override {
+        if(this->size_ == 0)
+            throw std::runtime_error("Empty");
         T back = this->data_[this->back_];
         this->back_ = (this->back_ - 1 + this->capacity_) % this->capacity_;
         this->size_--;
