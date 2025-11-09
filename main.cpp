@@ -28,7 +28,7 @@ int main() {
     sta.addTail(5);
 
     LinkedList<int> stb(sta);
-    stb.printForward();
+    std::cout << stb.getCount() << std::endl;
     // sta.pushBack(1);
     // sta.pushBack(2);
     // sta.pushBack(3);

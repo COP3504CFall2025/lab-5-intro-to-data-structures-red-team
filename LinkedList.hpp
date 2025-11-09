@@ -164,7 +164,7 @@ public:
 		this->tail = nullptr;
 		this->count = 0;
 	}
-	LinkedList(const LinkedList<T>& list): head(nullptr), tail(nullptr) {
+	LinkedList(const LinkedList<T>& list): head(nullptr), tail(nullptr), count(0) {
 		if(list.head == nullptr) {
 			this->head = nullptr;
 			this->tail = nullptr;
