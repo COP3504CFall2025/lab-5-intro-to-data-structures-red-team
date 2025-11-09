@@ -51,7 +51,6 @@ public:
 		Node<T>* temp = new Node<T>(data);
 		temp->next = this->head;
 		temp->prev = nullptr;
-		temp->data = data;
 		if(this->head) // if it exists, heads prev needs to point to temp
 			this->head->prev = temp;
 		else { // if its first element and doesnt exist then it just equals temp
@@ -131,6 +130,7 @@ public:
 		this->count = other.getCount();
 		other.head = nullptr;
 		other.tail = nullptr;
+		other.count = 0;
 		return *this;
 	}
 	LinkedList<T>& operator=(const LinkedList<T>& rhs) {
@@ -184,6 +184,7 @@ public:
 		this->tail = other.tail;
 		other.tail = nullptr;
 		this->count = other.count;
+		other.count = 0;
 	}
 	~LinkedList() {
 		this->clear();

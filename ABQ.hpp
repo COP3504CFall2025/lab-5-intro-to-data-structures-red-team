@@ -58,6 +58,8 @@ public:
         this->curr_size_ = other.size;
         this->array_ = other.array_;
         other.array_ = nullptr;
+        other.curr_size_ = 0;
+        other.capacity_ = 0;
     }
     ABQ& operator=(ABQ&& rhs) noexcept {
         if(this == &rhs)
@@ -68,6 +70,8 @@ public:
         this->curr_size_ = rhs.size;
         this->array_ = rhs.array_;
         rhs.array_ = nullptr;
+        rhs.curr_size_ = 0;
+        rhs.capacity_ = 0;
     }
     ~ABQ() noexcept override {
         delete[] this->array_;
