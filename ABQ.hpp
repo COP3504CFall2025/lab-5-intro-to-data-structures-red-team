@@ -123,7 +123,7 @@ public:
         }
 
         this->curr_size_--;
-        if (static_cast<double>(this->capacity_) / static_cast<double>(scale_factor_) <= static_cast<double>(this->curr_size_)) {
+        if (static_cast<double>(this->capacity_) / static_cast<double>(scale_factor_) < static_cast<double>(this->curr_size_)) {
             this->capacity_ /= scale_factor_;
         }
         T* newArr = new T[this->capacity_];
