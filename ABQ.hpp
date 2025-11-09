@@ -33,7 +33,7 @@ public:
         this->array_ = new T[this->capacity_];
 
         // copy array
-        for(int i = 0; i < this->curr_size_; i++) {
+        for(size_t i = 0; i < this->curr_size_; i++) {
             this->array_[i] = other.array_[i];
         }
     }
@@ -49,13 +49,13 @@ public:
         this->array_ = new T[this->capacity_];
 
         // copy array
-        for(int i = 0; i < this->curr_size_; i++) {
+        for(size_t i = 0; i < this->curr_size_; i++) {
             this->array[i] = rhs.array_[i];
         }
     }
     ABQ(ABQ&& other) noexcept {
         this->capacity_ = other.capacity_;
-        this->curr_size_ = other.size;
+        this->curr_size_ = other.curr_size_;
         this->array_ = other.array_;
         other.array_ = nullptr;
         other.curr_size_ = 0;
@@ -97,7 +97,7 @@ public:
             T* newArr = new T[this->capacity_];
             
             // copy over to new array
-            for(int i = 0; i < this->curr_size_; i++) {
+            for(size_t i = 0; i < this->curr_size_; i++) {
                 newArr[i] =  this->array_[i];
             }
             delete[] this->array_;
@@ -122,7 +122,7 @@ public:
 
         this->curr_size_--;
         T* newArr = new T[this->capacity_];
-        for(int i = 0; i < this->curr_size_; i++) {
+        for(size_t i = 0; i < this->curr_size_; i++) {
             newArr[i] = this->array_[i + 1];
         }
         T front = this->array_[0];

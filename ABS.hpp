@@ -27,8 +27,8 @@ public:
         this->array_ = new T[this->capacity_];
 
         // copy array
-        for(int i = 0; i < this->curr_size_; i++) {
-            this->array[i] = other.array_[i];
+        for(size_t i = 0; i < this->curr_size_; i++) {
+            this->array_[i] = other.array_[i];
         }
     }
     ABS& operator=(const ABS& rhs) {
@@ -43,13 +43,13 @@ public:
         this->array_ = new T[this->capacity_];
 
         // copy array
-        for(int i = 0; i < this->curr_size_; i++) {
-            this->array[i] = rhs.array_[i];
+        for(size_t i = 0; i < this->curr_size_; i++) {
+            this->array_[i] = rhs.array_[i];
         }
     }
     ABS(ABS&& other) noexcept {
         this->capacity_ = other.capacity_;
-        this->curr_size_ = other.size;
+        this->curr_size_ = other.curr_size_;
         this->array_ = other.array_;
         other.array_ = nullptr;
         other.curr_size_ = 0;
@@ -91,11 +91,11 @@ public:
     void push(const T& data) override {
         if(curr_size_ + 1 > capacity_) {
             // resize array
-            this->capacity_ *= this->scale_factor_;
+            this->capacity_ *= scale_factor_;
             T* newArr = new T[this->capacity_];
             
             // copy over to new array
-            for(int i = 0; i < this->curr_size_; i++) {
+            for(size_t i = 0; i < this->curr_size_; i++) {
                 newArr[i] =  this->array_[i];
             }
             delete[] this->array_;
