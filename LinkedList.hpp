@@ -144,17 +144,14 @@ public:
 			return *this;
 		}
 		else {
-			this->head = new Node(rhs.getHead()->data);
+			addTail(rhs.getHead()->data);
 			this->count = rhs.getCount();
 
-			Node<T>* thisTemp = this->head->next;
-			Node<T>* otherTemp = rhs.head->next;
+			Node<T>* otherTemp = rhs.head;
 			while(otherTemp != nullptr) {
-				thisTemp = new Node<T>(otherTemp->data);
-				thisTemp = thisTemp->next;
+				addTail(otherTemp->data);
 				otherTemp = otherTemp->next;
 			}
-			this->tail = thisTemp;
 			return *this;
 		}
 	}
@@ -172,17 +169,14 @@ public:
 			this->count = 0;
 		}
 		else {
-			this->head = new Node<T>(list.getHead()->data);
+			addTail(list.getHead()->data);
 			this->count = list.getCount();
-			Node<T>* otherTemp = list.head->next;
-			Node<T>* thisTemp = this->head->next;
 
+			Node<T>* otherTemp = list.head;
 			while(otherTemp != nullptr) {
-				thisTemp = new Node(otherTemp->data);
-				thisTemp = thisTemp->next;
+				addTail(otherTemp->data);
 				otherTemp = otherTemp->next;
 			}
-			this->tail = thisTemp;
 		}
 
 	}
