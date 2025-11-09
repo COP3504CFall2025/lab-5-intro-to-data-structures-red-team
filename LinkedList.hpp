@@ -141,6 +141,7 @@ public:
 			this->head = nullptr;
 			this->tail = nullptr;
 			this->count = 0;
+			return *this;
 		}
 		else {
 			this->head = new Node(rhs.getHead()->data);
