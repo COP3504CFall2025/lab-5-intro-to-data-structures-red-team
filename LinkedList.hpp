@@ -145,7 +145,6 @@ public:
 		}
 		else {
 			addTail(rhs.getHead()->data);
-			this->count = rhs.getCount();
 
 			Node<T>* otherTemp = rhs.head;
 			while(otherTemp != nullptr) {
@@ -170,7 +169,6 @@ public:
 		}
 		else {
 			addTail(list.getHead()->data);
-			this->count = list.getCount();
 
 			Node<T>* otherTemp = list.head;
 			while(otherTemp != nullptr) {
