@@ -15,14 +15,14 @@ class LinkedList {
 public:
 	// Behaviors
 	void printForward() const {
-		Node<T>* i = this->getHead();
+		Node<T>* i = this->head;
 		while(i != nullptr) {
 			std::cout << i->data << std::endl;
 			i = i->next;
 		}
 	}
 	void printReverse() const {
-		Node<T>* i = this->getTail();
+		Node<T>* i = this->tail;
 		while(i != nullptr) {
 			std::cout << i->data << std::endl;
 			i = i->prev;
@@ -55,9 +55,9 @@ public:
 		if(this->head) // if it exists, heads prev needs to point to temp
 			this->head->prev = temp;
 		else { // if its first element and doesnt exist then it just equals temp
-			this->head = temp;
 			this->tail = temp;
 		}
+		this->head = temp;
 		temp = nullptr; // avoid double delete and dangling ptr
 		this->count++;
 	}

@@ -40,7 +40,7 @@ int main() {
     // std::cout << sta.getSize() << std::endl;
     while(sta.getSize() > 0) {
         // std::cout << sta.getSize() << std::endl;
-        std::cout << sta.popBack() << std::endl;
+        std::cout << sta.popFront() << std::endl;
     }
 
     return 0;
