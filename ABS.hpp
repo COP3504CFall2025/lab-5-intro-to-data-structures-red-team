@@ -61,7 +61,7 @@ public:
         if(this->array_)
             delete[] this->array_;
         this->capacity_ = rhs.capacity_;
-        this->curr_size_ = rhs.size;
+        this->curr_size_ = rhs.curr_size_;
         this->array_ = rhs.array_;
         rhs.array_ = nullptr;
         rhs.curr_size_ = 0;
