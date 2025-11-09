@@ -18,7 +18,7 @@ class ABQ : public QueueInterface<T>{
 public:
     // Constructors + Big 5
     ABQ() {
-        this->capacity_ = 4;
+        this->capacity_ = 1;
         this->curr_size_ = 0;
         this->array_ = new T[this->capacity_];
     }
@@ -52,6 +52,7 @@ public:
         for(size_t i = 0; i < this->curr_size_; i++) {
             this->array[i] = rhs.array_[i];
         }
+        return *this;
     }
     ABQ(ABQ&& other) noexcept {
         this->capacity_ = other.capacity_;

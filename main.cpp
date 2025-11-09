@@ -20,15 +20,19 @@
 
 int main() {
 
-    LinkedList<int> sta;
-    sta.addHead(1);
-    sta.addTail(2);
-    sta.addTail(3);
-    sta.addTail(4);
-    sta.addTail(5);
+    ABQ<int> sta;
+    sta.enqueue(1);
+    sta.enqueue(2);
+    sta.enqueue(3);
+    sta.enqueue(4);
+    sta.enqueue(5);
+    // sta.addTail(2);
+    // sta.addTail(3);
+    // sta.addTail(4);
+    // sta.addTail(5);
 
-    LinkedList<int> stb(sta);
-    std::cout << stb.getCount() << std::endl;
+    ABQ<int> stb(sta);
+    std::cout << stb.peek() << std::endl;
     // sta.pushBack(1);
     // sta.pushBack(2);
     // sta.pushBack(3);

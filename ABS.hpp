@@ -13,7 +13,7 @@ public:
     // Big 5 + Parameterized Constructor
     ABS() {
         this->curr_size_ = 0;
-        this->capacity_ = 4;
+        this->capacity_ = 1;
         this->array_ = new T[this->capacity_];
     }
     explicit ABS(const size_t capacity) {
@@ -46,6 +46,7 @@ public:
         for(size_t i = 0; i < this->curr_size_; i++) {
             this->array_[i] = rhs.array_[i];
         }
+        return *this;
     }
     ABS(ABS&& other) noexcept {
         this->capacity_ = other.capacity_;
@@ -90,15 +91,15 @@ public:
 
     // Push item onto the stack
     void push(const T& data) override {
-        if(curr_size_ + 1 > capacity_) {
+        if(this->curr_size_ + 1 > this->capacity_) {
             // resize array
-            this->capacity_ *= scale_factor_;
-            T* newArr = new T[this->capacity_];
+            T* newArr = new T[this->capacity_ * scale_factor_];
             
             // copy over to new array
             for(size_t i = 0; i < this->curr_size_; i++) {
                 newArr[i] =  this->array_[i];
             }
+            this->capacity_ *= scale_factor_;
             delete[] this->array_;
             this->array_ = newArr;
             newArr = nullptr;

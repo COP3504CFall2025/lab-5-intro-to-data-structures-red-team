@@ -71,6 +71,7 @@ public:
         for(size_t i = 0; i < this->size_; i++) {
             this->data_[i] = other.data_[(other.front_ + i) % this->capacity_];
         }
+        return *this;
     }
     ABDQ& operator=(ABDQ&& other) noexcept {
         if(this == &other)
@@ -85,6 +86,7 @@ public:
         other.data_ = nullptr;
         other.size_ = 0;
         other.capacity_ = 0;
+        return *this;
     }
     ~ABDQ() override {
         delete[] this->data_;
