@@ -113,7 +113,7 @@ public:
     T peek() const override {
         if(this->curr_size_ == 0)
             throw std::runtime_error("");
-        return this->array_[this->curr_size_ - 1];
+        return this->array_[0];
     }
 
     // Deletion
@@ -123,6 +123,9 @@ public:
         }
 
         this->curr_size_--;
+        if (static_cast<double>(this->capacity_) / static_cast<double>(scale_factor_) <= static_cast<double>(this->curr_size_)) {
+            this->capacity_ /= scale_factor_;
+        }
         T* newArr = new T[this->capacity_];
         for(size_t i = 0; i < this->curr_size_; i++) {
             newArr[i] = this->array_[i + 1];

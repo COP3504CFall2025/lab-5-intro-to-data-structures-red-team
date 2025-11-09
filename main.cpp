@@ -31,8 +31,10 @@ int main() {
     // sta.addTail(4);
     // sta.addTail(5);
 
-    ABQ<int> stb(sta);
-    std::cout << stb.peek() << std::endl;
+    // ABQ<int> stb(sta);
+    std::cout << sta.peek() << std::endl;
+    sta.dequeue();
+    std::cout << sta.peek() << std::endl;
     // sta.pushBack(1);
     // sta.pushBack(2);
     // sta.pushBack(3);
