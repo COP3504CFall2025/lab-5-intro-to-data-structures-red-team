@@ -26,7 +26,9 @@ int main() {
     sta.addTail(3);
     sta.addTail(4);
     sta.addTail(5);
-    sta.printForward();
+
+    LinkedList<int> stb(sta);
+    stb.printForward();
     // sta.pushBack(1);
     // sta.pushBack(2);
     // sta.pushBack(3);

@@ -88,9 +88,10 @@ public:
 			return true;
 		}
 		// otherwise normal situation
+		Node<T>* temp = this->head;
 		this->head = this->head->next;
-		delete this->head->prev;
 		this->head->prev = nullptr;
+		delete temp;
 		this->count -= 1;
 		return true;
 	}
@@ -106,17 +107,19 @@ public:
 			return true;
 		}
 		// otherwise normal situation
+		Node<T>* temp = this->tail;
 		this->tail = this->tail->prev;
-		delete this->tail->next;
 		this->tail->next = nullptr;
+		delete temp;
 		this->count -= 1;
 		return true;
 	}
 	void clear() {
 		Node<T>* i = this->head;
-		while(i != nullptr) {
+		while(i != nullptr && i->next != nullptr) {
+			Node<T>* j = i->next;
 			delete i;
-			i = i->next;
+			i = j;
 		}
 		this->head = nullptr;
 		this->tail = nullptr;
@@ -125,6 +128,7 @@ public:
 
 	// Operators
 	LinkedList<T>& operator=(LinkedList<T>&& other) noexcept {
+		this->clear();
 		this->head = other.getHead();
 		this->tail = other.getTail();
 		this->count = other.getCount();
@@ -144,11 +148,10 @@ public:
 			return *this;
 		}
 		else {
-			addTail(rhs.getHead()->data);
-
 			Node<T>* otherTemp = rhs.head;
+			this->clear();
 			while(otherTemp != nullptr) {
-				addTail(otherTemp->data);
+				this->addTail(otherTemp->data);
 				otherTemp = otherTemp->next;
 			}
 			return *this;
@@ -161,18 +164,16 @@ public:
 		this->tail = nullptr;
 		this->count = 0;
 	}
-	LinkedList(const LinkedList<T>& list) {
+	LinkedList(const LinkedList<T>& list): head(nullptr), tail(nullptr) {
 		if(list.head == nullptr) {
 			this->head = nullptr;
 			this->tail = nullptr;
 			this->count = 0;
 		}
 		else {
-			addTail(list.getHead()->data);
-
 			Node<T>* otherTemp = list.head;
 			while(otherTemp != nullptr) {
-				addTail(otherTemp->data);
+				this->addTail(otherTemp->data);
 				otherTemp = otherTemp->next;
 			}
 		}
