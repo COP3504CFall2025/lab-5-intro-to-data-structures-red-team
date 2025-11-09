@@ -119,6 +119,8 @@ public:
 			delete i;
 			i = i->next;
 		}
+		this->head = nullptr;
+		this->tail = nullptr;
 		this->count = 0;
 	}
 
