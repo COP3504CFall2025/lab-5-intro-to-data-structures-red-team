@@ -145,6 +145,19 @@ public:
     T popFront() override {
         if(this->size_ == 0)
             throw std::runtime_error("");
+        // resize down
+        if (static_cast<double>(this->capacity_) / SCALE_FACTOR < static_cast<double>(this->size_)) {
+            T* newArr = new T[this->capacity_ / SCALE_FACTOR];
+            for(size_t i = 0; i < this->size_; i++) {
+                newArr[i] = this->data_[(this->front_ + i) % capacity_];
+            }
+            this->front_ = 0;
+            this->back_ = this->size_ - 1;
+            this->capacity_ /= SCALE_FACTOR;
+            delete[] this->data_;
+            this->data_ = newArr;
+            newArr = nullptr;
+        }
         T front = this->data_[this->front_];
         this->front_ = (this->front_ + 1) % this->capacity_;
         this->size_--;
@@ -153,6 +166,19 @@ public:
     T popBack() override {
         if(this->size_ == 0)
             throw std::runtime_error("");
+        // resize down
+        if (static_cast<double>(this->capacity_) / SCALE_FACTOR < static_cast<double>(this->size_)) {
+            T* newArr = new T[this->capacity_ / SCALE_FACTOR];
+            for(size_t i = 0; i < this->size_; i++) {
+                newArr[i] = this->data_[(this->front_ + i) % capacity_];
+            }
+            this->front_ = 0;
+            this->back_ = this->size_ - 1;
+            this->capacity_ /= SCALE_FACTOR;
+            delete[] this->data_;
+            this->data_ = newArr;
+            newArr = nullptr;
+        }
         T back = this->data_[this->back_];
         this->back_ = (this->back_ - 1 + this->capacity_) % this->capacity_;
         this->size_--;
