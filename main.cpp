@@ -21,7 +21,7 @@
 int main() {
 
     LinkedList<int> sta;
-    sta.addTail(1);
+    sta.addHead(1);
     sta.addTail(2);
     sta.addTail(3);
     sta.addTail(4);

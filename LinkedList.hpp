@@ -116,7 +116,7 @@ public:
 	}
 	void clear() {
 		Node<T>* i = this->head;
-		while(i != nullptr && i->next != nullptr) {
+		while(i != nullptr) {
 			Node<T>* j = i->next;
 			delete i;
 			i = j;
